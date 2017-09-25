@@ -16,18 +16,20 @@ public class StudentController {
     }
 
     @RequestMapping("/create_student")
-    public String createStudent(@RequestParam(value="first_name") String firstName, @RequestParam(value="last_name") String lastName, @RequestParam(value="grade") Grade grade, Model model) {
+    public String createStudent(@RequestParam(value="first_name") String firstName, @RequestParam(value="last_name") String lastName, @RequestParam(value="grade") Grade grade,  @RequestParam(value="enrolled") boolean enrolled, Model model) {
         Student student = new Student();
 
         System.out.println("RequestParams:");
         System.out.println(firstName);
         System.out.println(lastName);
         System.out.println(grade);
+        System.out.println(enrolled);
 
         /* set student firstName, lastName and grade using the http request parameters */
         student.setFirstName(firstName);
         student.setLastName(lastName);
         student.setGrade(grade);
+        student.setEnrolled(enrolled);
 
         /* add the student to the model that will be used by the view_student html file */
         model.addAttribute("student", student);
